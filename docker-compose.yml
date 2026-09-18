@@ -49,6 +49,10 @@ services:
       args:
         BACKEND_URL: http://backend:8000
     restart: unless-stopped
+    environment:
+      # Usada pela rota proxy interna do Next.js para alcançar a API somente
+      # pela rede privada do Compose.
+      BACKEND_URL: http://backend:8000
     expose: ["3000"]
     depends_on:
       backend:
