@@ -19,7 +19,7 @@ As conversas e configurações são compartilhadas entre os integrantes da equip
 ## Publicar na VPS com Dokploy
 
 1. Coloque este projeto em um repositório acessível pelo Dokploy.
-2. Crie um projeto e um serviço **Docker Compose**, vincule o repositório e selecione `compose.yaml` como arquivo de Compose. Use Docker Compose, não Docker Stack.
+2. Crie um projeto e um serviço **Docker Compose**, vincule o repositório e selecione `docker-compose.yml` como arquivo de Compose. Use Docker Compose, não Docker Stack.
 3. No painel de variáveis do serviço, copie as chaves de `.env.example` e preencha os valores reais. Gere senhas distintas para PostgreSQL e equipe; a senha da equipe deve ter pelo menos 12 caracteres e `SESSION_SECRET` pelo menos 32. Não use os exemplos em produção.
 4. Configure `OPENAI_API_KEY`, `APP_ORIGIN=https://studio.seudominio.com.br` (sem caminho) e `COOKIE_SECURE=true`. Os modelos são configuráveis conforme o acesso da sua conta.
 5. Faça o deploy. A API aplica as migrações pendentes automaticamente depois que o PostgreSQL estiver saudável.
@@ -45,7 +45,7 @@ O `BACKEND_URL` das rewrites é definido no build do frontend. Se mudar o endere
 Copie `.env.example` para `.env` e preencha as senhas. A chave OpenAI é necessária para conversar/gerar; a interface e configurações podem ser usadas sem ela.
 
 ```sh
-docker compose -f compose.yaml -f compose.local.yaml up --build -d
+docker compose -f docker-compose.yml -f compose.local.yaml up --build -d
 ```
 
 Abra http://localhost:3000. O override local publica somente o frontend em loopback e desativa cookie Secure para HTTP. Para parar, use o mesmo comando de Compose com `stop`.
