@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 async function proxy(request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   const { path } = await params;
-  const backend = process.env.BACKEND_URL || 'http://backend:8000';
+  const backend = process.env.BACKEND_URL || 'http://superpulseiras-studio-api:8000';
   const target = new URL(`/api/${path.join('/')}${request.nextUrl.search}`, backend);
   const headers = new Headers(request.headers);
   headers.delete('host');
