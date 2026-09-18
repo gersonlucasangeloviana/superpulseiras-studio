@@ -20,7 +20,7 @@ As conversas e configurações são compartilhadas entre os integrantes da equip
 
 1. Coloque este projeto em um repositório acessível pelo Dokploy.
 2. Crie um projeto e um serviço **Docker Compose**, vincule o repositório e selecione `docker-compose.yml` como arquivo de Compose. Use Docker Compose, não Docker Stack.
-3. No painel de variáveis do serviço, copie as chaves de `.env.example` e preencha os valores reais. Gere senhas distintas para PostgreSQL e equipe; a senha da equipe deve ter pelo menos 12 caracteres e `SESSION_SECRET` pelo menos 32. Não use os exemplos em produção.
+3. No painel de variáveis do serviço, copie as chaves de `.env.example` e preencha os valores reais. Gere senhas distintas para PostgreSQL e equipe; a senha da equipe pode ter qualquer tamanho (não pode ser vazia) e `SESSION_SECRET` deve ter pelo menos 32 caracteres. Não use os exemplos em produção.
 4. Configure `OPENAI_API_KEY`, `APP_ORIGIN=https://studio.seudominio.com.br` (sem caminho) e `COOKIE_SECURE=true`. Os modelos são configuráveis conforme o acesso da sua conta.
 5. Faça o deploy. A API aplica as migrações pendentes automaticamente depois que o PostgreSQL estiver saudável.
 6. Em **Domains**, associe seu domínio ao serviço **frontend**, porta **3000**, caminho `/`, com HTTPS/Let's Encrypt. Configure o registro DNS para a VPS. Use a gestão de domínios/isolamento do Dokploy para conectar o frontend ao Traefik.

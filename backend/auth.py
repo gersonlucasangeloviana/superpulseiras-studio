@@ -16,8 +16,8 @@ failures: list[float] = []
 
 
 def validate_config():
-    if len(os.getenv('STUDIO_PASSWORD', '')) < 12:
-        raise RuntimeError('STUDIO_PASSWORD precisa ter pelo menos 12 caracteres.')
+    if not os.getenv('STUDIO_PASSWORD'):
+        raise RuntimeError('Defina STUDIO_PASSWORD.')
     if len(os.getenv('SESSION_SECRET', '')) < 32:
         raise RuntimeError('SESSION_SECRET precisa ter pelo menos 32 caracteres.')
     if not os.getenv('APP_ORIGIN', '').startswith(('http://', 'https://')):
