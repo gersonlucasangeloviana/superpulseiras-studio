@@ -58,7 +58,10 @@ services:
       interval: 20s
       timeout: 8s
       retries: 5
-    networks: [private]
+    # O Traefik do Dokploy acessa este serviço pela rede externa. A porta
+    # permanece apenas exposta entre containers; configure o domínio na UI do
+    # Dokploy para o serviço `frontend`, porta 3000 e caminho `/`.
+    networks: [private, dokploy-network]
 
 volumes:
   postgres_data:
@@ -67,3 +70,6 @@ volumes:
 networks:
   private:
     driver: bridge
+  # Rede criada e administrada pelo Dokploy. Não é criada por este Compose.
+  dokploy-network:
+    external: true
