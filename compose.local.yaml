@@ -1,0 +1,7 @@
+services:
+  frontend:
+    ports: ["127.0.0.1:3000:3000"]
+  backend:
+    environment:
+      APP_ORIGIN: http://localhost:3000
+      COOKIE_SECURE: "false"
